@@ -1,0 +1,9 @@
+FROM python:3.8-slim
+
+WORKDIR /app
+
+COPY procesamiento.py requirements.txt wait-for-kafka.sh ./
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+CMD ["./wait-for-kafka.sh", "python", "procesamiento.py"]
